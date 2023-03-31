@@ -19,6 +19,7 @@ import "../styles/navbar.css";
 import { GaslessWalletInterface } from "@gelatonetwork/gasless-onboarding";
 import { GaslessWallet } from "@gelatonetwork/gasless-wallet";
 import { gaslessOnboarding } from "./Onboard";
+import { useAccount } from "wagmi";
 
 // const pages = ["Products", "Pricing", "Blog"];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -46,6 +47,9 @@ function Navbar() {
   // const handleCloseUserMenu = () => {
   //   setAnchorElUser(null);
   // };
+
+  const { isConnected } = useAccount();
+  console.log(isConnected);
 
   const [walletAddress, setWalletAddress] = useState("");
   const [gaslessWallet, setGaslessWallet] = useState({});
@@ -159,14 +163,28 @@ function Navbar() {
           </Box> */}
           <div className="conncet-btn-div">
             {/* <ConnectButton /> */}
-            <button
-              className="connect-btn"
-              onClick={() => {
-                login();
-              }}
-            >
-              Connect
-            </button>
+            {!isConnected ? (
+              <button
+                className="connect-btn"
+                onClick={() => {
+                  login();
+                }}
+              >
+                Connect
+              </button>
+            ) : (
+              <>
+                {/* {walletAddress ? <div>{walletAddress}</div> : null} */}
+                <button
+                  className="connect-btn"
+                  onClick={() => {
+                    logout();
+                  }}
+                >
+                  Disconnect
+                </button>
+              </>
+            )}
           </div>
 
           {/* <Box sx={{ flexGrow: 0 }}>
