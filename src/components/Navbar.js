@@ -12,12 +12,12 @@ import Container from "@mui/material/Container";
 // import Tooltip from "@mui/material/Tooltip";
 // import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+// import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/LOGO1.png";
 import "../styles/navbar.css";
-import { GaslessWalletInterface } from "@gelatonetwork/gasless-onboarding";
-import { GaslessWallet } from "@gelatonetwork/gasless-wallet";
+// import { GaslessWalletInterface } from "@gelatonetwork/gasless-onboarding";
+// import { GaslessWallet } from "@gelatonetwork/gasless-wallet";
 import { gaslessOnboarding } from "./Onboard";
 import { useAccount } from "wagmi";
 
@@ -51,9 +51,13 @@ function Navbar() {
   const { isConnected } = useAccount();
   console.log(isConnected);
 
-  const [walletAddress, setWalletAddress] = useState("");
+  const [walletAddres, setWalletAddress] = useState("");
   const [gaslessWallet, setGaslessWallet] = useState({});
   const [web3AuthProvider, setWeb3AuthProvider] = useState(null);
+
+  console.log(walletAddres);
+  console.log(gaslessWallet);
+  console.log(web3AuthProvider);
 
   const login = async () => {
     try {
