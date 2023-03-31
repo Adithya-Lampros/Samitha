@@ -28,7 +28,8 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "wagmi": "^0.11.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "homepage": "."
   },
   "scripts": {
     "start": "react-app-rewired start",
