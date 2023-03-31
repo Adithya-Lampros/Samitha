@@ -1,0 +1,60 @@
+.all-datadao-main-div {
+  width: 100%;
+}
+.all-datadao-div {
+  margin: 0 auto;
+}
+.all-datadao-title {
+  text-align: center;
+}
+.all-datadao-section1 {
+  margin-bottom: 50px;
+}
+#datadao-address-main {
+  position: absolute;
+  bottom: 50px;
+  margin-left: 3vw;
+}
+.datadao-address {
+  /* background-color: aqua; */
+  width: 300px;
+  padding: 10px;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+.all-datadao-section2 {
+  width: 60%;
+  margin: 0 auto;
+}
+.dataDAo-details {
+  width: 20%;
+}
+
+.create-proposal-main-div {
+  height: 100vh;
+}
+
+.type-width {
+  width: 25vw;
+}
+
+.desc-height {
+  height: 10vh;
+  width: 25vw;
+}
+
+.create-proposal-btn-popup {
+  padding: 10px;
+  background-color: #1b143e;
+  color: white;
+  border: #1b143e 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* .proposal-margin-div {
+  height: 10vh;
+  width: 10vw;
+} */

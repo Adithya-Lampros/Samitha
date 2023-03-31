@@ -1,0 +1,58 @@
+.css-1wnsr1i {
+  background-color: #fcfddc !important;
+  border-radius: 20px !important;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  color: #fcfddc !important;
+  background-color: #1b143e !important;
+}
+
+.add-token-leftbar-token-main {
+  /* border: 1px solid gray; */
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fcfddc;
+}
+.addtoken-title {
+  margin: 0;
+  padding-top: 0;
+}
+.addtoken-main-div {
+  width: 80%;
+  /* border: 1px solid gray; */
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.addtoken-main-section {
+  width: 100%;
+  margin-top: 10%;
+}
+.addtoken-rightbar-token-main {
+  width: 50%;
+  padding: 20px;
+}
+.addtoken-label {
+  padding: 20px;
+}
+.addtoken-label1 {
+  font-size: 1rem;
+  font-weight: 600;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+#demo-helper-text-misaligned-no-helper {
+  padding: 15px;
+}
+.addtoken-btn {
+  padding-left: 20px;
+}
+.add-token-cancel {
+  display: flex;
+  flex-direction: row;
+  /* border-bottom: 1px solid gray; */
+  justify-content: space-between;
+  padding: 20px;
+}

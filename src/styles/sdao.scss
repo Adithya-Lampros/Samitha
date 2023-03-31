@@ -1,0 +1,49 @@
+.sdao-all-datadao-section2 {
+  width: 100%;
+  margin: 0 auto;
+  .sdao-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 400px;
+    overflow: hidden;
+    padding: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 20px;
+    width: 300px;
+    margin: 0 auto;
+
+    .sdao-name {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      width: 100%;
+    }
+
+    .sdao-description {
+      height: 300px;
+      overflow: auto;
+      padding: 10px;
+    }
+
+    .sdao-address {
+      display: inline-flex;
+      align-items: center;
+      align-content: center;
+      padding: 10px 0 10px 0;
+    }
+
+    .sdao-btn {
+      button {
+        padding: 10px;
+        background-color: #1b143e;
+        color: white;
+        border: #1b143e 1px solid;
+        border-radius: 10px;
+        margin: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

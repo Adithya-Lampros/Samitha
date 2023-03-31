@@ -1,0 +1,39 @@
+.css-1w9q1g1 {
+  background-color: #fcfddc !important;
+  border-radius: 20px !important;
+}
+
+.create-proposal-main-div {
+  width: 100%;
+  /* background-color: bisque; */
+  background-color: #fcfddc;
+}
+.create-proposal-div {
+  width: 80%;
+  /* text-align: center; */
+  margin: 0 auto;
+}
+.create-proposal-title {
+  font-size: 2rem;
+  text-align: center;
+}
+.create-proposal-desc {
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: center;
+}
+.create-proposal-label {
+  font-size: 1.5rem;
+}
+.uploadfile {
+  margin-top: 10px;
+}
+.proposal-date {
+  padding: 5px;
+}
+.proposal-date1 {
+  margin-left: 10px;
+}
+.proposal-margin-div {
+  margin-top: 20px;
+}

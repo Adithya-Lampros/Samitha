@@ -1,0 +1,21 @@
+.main-video {
+  text-align: center;
+  /* padding: 40px 30px; */
+  background-color: #47415f;
+}
+
+.my-video {
+  border-radius: 50px;
+  border-radius: 60px;
+  background: #47415f;
+  box-shadow: 35px 35px 70px #3c3751, -35px -35px 70px #524b6d;
+  max-width: 720px;
+  min-height: 360;
+  padding: 30px 0px;
+  margin: 40px auto;
+}
+.peer-video {
+  border-radius: 12px;
+  background: #47415f;
+  box-shadow: 35px 35px 70px #3c3751, -35px -35px 70px #524b6d;
+}

@@ -1,0 +1,1264 @@
+{
+	"compiler": {
+		"version": "0.8.13+commit.abaa5c0e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "admin",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IERC20",
+						"name": "_token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_condition",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minimunApproval",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_votingPeriod",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenPrice",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "DataDAO_CallerIsNotMember",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataDAO__CallerIsNotAdmin",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataDAO__DataSizeNotMatched",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataDAO__DealProposalPolicyCheckFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataDAO__DealProposalWasNotApproved",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "adminAddress",
+						"type": "address"
+					}
+				],
+				"name": "AdminAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "cidraw",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "dealStartBlockStamp",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "dealDurationInDays",
+						"type": "uint256"
+					}
+				],
+				"name": "DealAcivated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "cidraw",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "decision",
+						"type": "bytes32"
+					}
+				],
+				"name": "DealApproval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "cidraw",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "size",
+						"type": "uint256"
+					}
+				],
+				"name": "DealProposed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "memberAddress",
+						"type": "address"
+					}
+				],
+				"name": "MemberAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "previousAdminRole",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "newAdminRole",
+						"type": "bytes32"
+					}
+				],
+				"name": "RoleAdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleGranted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleRevoked",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DEFAULT_ADMIN_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint64",
+						"name": "_networkDealID",
+						"type": "uint64"
+					}
+				],
+				"name": "activateDataSetDealBySP",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_memberAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenbalance",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_customName",
+						"type": "string"
+					}
+				],
+				"name": "addDaoMember",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_cidraw",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_proposalId",
+						"type": "uint256"
+					}
+				],
+				"name": "approveOrRejectDataSet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"name": "cidProviders",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "cidSet",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "cidSizes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_cidraw",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_size",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_dealDurationInDays",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_dealStorageFees",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_proposalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_proposalaDescription",
+						"type": "string"
+					}
+				],
+				"name": "createDataSetDealProposal",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "dealClient",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "dealStorageFees",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "deals",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "proposedBy",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "cidraw",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "size",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "storageFees",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dealStartBlockStamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dealDurationInDays",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum IDataDAO.DealState",
+						"name": "dealState",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "proposalID",
+						"type": "uint256"
+					}
+				],
+				"name": "downvoteCIDProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "fundings",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getDataDaoVotingConfig",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "condition",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "minimunApproval",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "votingPeriod",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct DataDAO.VotingConfig",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_cidraw",
+						"type": "bytes"
+					}
+				],
+				"name": "getDealState",
+				"outputs": [
+					{
+						"internalType": "enum IDataDAO.DealState",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					}
+				],
+				"name": "getRoleAdmin",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getaAllProposals",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "proposalID",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "proposalName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "proposalDescription",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "proposalCreator",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes",
+								"name": "cidraw",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint256",
+								"name": "size",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "upVoteCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "downVoteCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "proposedAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "proposalExpireAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "status",
+								"type": "string"
+							}
+						],
+						"internalType": "struct DataDAO.Proposal[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "grantRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "hasRole",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "hasVotedForProposal",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "proposalID",
+						"type": "uint256"
+					}
+				],
+				"name": "isCallerPC",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isMember",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposalCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "proposals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "proposalID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "proposalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "proposalDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "proposalCreator",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "cidraw",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint256",
+						"name": "size",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "upVoteCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "downVoteCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "proposedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "proposalExpireAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "status",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "renounceRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "revokeRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_condition",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minimunApproval",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_votingPeriod",
+						"type": "uint256"
+					}
+				],
+				"name": "setDataDaoVotingConfig",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceId",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tokenPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "proposalID",
+						"type": "uint256"
+					}
+				],
+				"name": "upvoteCIDProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "votingconfigs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "condition",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minimunApproval",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votingPeriod",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_cidraw",
+						"type": "bytes"
+					}
+				],
+				"name": "withdrawReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"activateDataSetDealBySP(uint64)": {
+					"details": "Activates the deal",
+					"params": {
+						"_networkDealID": ": Deal ID generated after the deal is created on Filecoin Network "
+					}
+				},
+				"approveOrRejectDataSet(bytes,uint256)": {
+					"details": "Approves or Rejects the proposal - This would enable to govern the data that is stored by the DAO",
+					"params": {
+						"_cidraw": ": Id of the cred.",
+						"_proposalId": ": prposal Id of proposal"
+					}
+				},
+				"createDataSetDealProposal(bytes,uint256,uint256,uint256,string,string)": {
+					"details": "Creates a new deal proposal. ",
+					"params": {
+						"_cidraw": ": cid for which the deal proposal is to be created.",
+						"_dealDurationInDays": ": deal duration in Days",
+						"_size": ": size of cid"
+					}
+				},
+				"getDealState(bytes)": {
+					"details": "Returns current state of the deal",
+					"params": {
+						"_cidraw": ": Id of the cred."
+					}
+				},
+				"getRoleAdmin(bytes32)": {
+					"details": "Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}."
+				},
+				"grantRole(bytes32,address)": {
+					"details": "Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role."
+				},
+				"hasRole(bytes32,address)": {
+					"details": "Returns `true` if `account` has been granted `role`."
+				},
+				"renounceRole(bytes32,address)": {
+					"details": "Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been revoked `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`."
+				},
+				"revokeRole(bytes32,address)": {
+					"details": "Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role."
+				},
+				"supportsInterface(bytes4)": {
+					"details": "See {IERC165-supportsInterface}."
+				},
+				"withdrawReward(bytes)": {
+					"details": "Once the deal is expired the SP can withdraw the rewards",
+					"params": {
+						"_cidraw": ": Id of the cred."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/data-dao/DataDAOInstance.sol": "DataDAOInstance"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@ensdomains/buffer/contracts/Buffer.sol": {
+			"keccak256": "0xd6dd3b0b327288f8e1b711a609f4040fea602e2ad4bba9febdf2f33b4e56eb0c",
+			"license": "BSD-2-Clause",
+			"urls": [
+				"bzz-raw://78a722152d40d778a97595e5224fac1d138f4e659dcb1a926148909ef4c4bdca",
+				"dweb:/ipfs/QmRxScF53x5ywsChLNpMUCdg2TSoCWTfo8G65Mo3sGY55b"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+			]
+		},
+		"@openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8c969013129ba9e651a20735ef659fef6d8a1139ea3607bd4b26ddea2d645634",
+				"dweb:/ipfs/QmVhVa6LGuzAcB8qgDtVHRkucn4ihj5UZr8xBLcJkP6ucb"
+			]
+		},
+		"@openzeppelin/contracts/utils/math/Math.sol": {
+			"keccak256": "0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33bbf48cc069be677705037ba7520c22b1b622c23b33e1a71495f2d36549d40b",
+				"dweb:/ipfs/Qmct36zWXv3j7LZB83uwbg7TXwnZSN1fqHNDZ93GG98bGz"
+			]
+		},
+		"contracts/data-dao/DataDAO.sol": {
+			"keccak256": "0x2d97e574edf163f6fe5a9dc19636880865c1a0fbade57ae1a480a42e533857eb",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://5fac9df89257858f2d94418bebf298a702d63f2922f4598e9be0d6dfc15921d5",
+				"dweb:/ipfs/QmXMnu1rGukzeydbvrW6opkNMcPTshmyvVKe7mk5AgTHeF"
+			]
+		},
+		"contracts/data-dao/DataDAOInstance.sol": {
+			"keccak256": "0xcd5b3ca5bb9e55d2b66c0f9900bf50ba2a4ad7c89f3cf5a62e15f05617599536",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://6cd8985b6a9b78167257ef168514486c0b6633c43732c9cbdf1c72e98d972c2d",
+				"dweb:/ipfs/QmQBRpnK5e4ZsQ2rTjjWL3BGKs6A8kubsy6Z6bWB3YG5Qh"
+			]
+		},
+		"contracts/data-dao/base/DataDAOConstants.sol": {
+			"keccak256": "0xb340e62d990e7d82fc857b4abd04ef15ba4099aaeb8875a72e68b08bfe1e6b53",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://69a247e51a2308ee6915d2526895291807370b883ab0f6eddebc24f5e652dffa",
+				"dweb:/ipfs/QmYvDWfwESEFuNv3quQde5erPnMfZCrzkqtTBZsCXKDoT8"
+			]
+		},
+		"contracts/data-dao/base/DataDAOCore.sol": {
+			"keccak256": "0x7ea9d5e752fc97ed517b7c8a911a86241b6b8e8f17bd470de0ef272ea8e1b886",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://982927d45451fdc33e14cc8486344fb72a52b386ebd97a5d4cd5e0d160afb157",
+				"dweb:/ipfs/QmWYAtK3UsLEU5RdKmFW2ZB7UpEHyCZgh3TWzNBbuCoNXM"
+			]
+		},
+		"contracts/data-dao/interfaces/IDataDAO.sol": {
+			"keccak256": "0xcbaa7b1f9dfc209545897a2b233470340c4327708606c862ec94c3103f353604",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://846493f9c3f9775cd13864357804bfbc13b06494bea52b264a7f2af827837e00",
+				"dweb:/ipfs/QmamrYqMzmpQKwjFoLTA8xjwJ9BsrVQvcBfvgbKmj7WBxF"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/MarketAPI.sol": {
+			"keccak256": "0x129b46f71c545391c4d49787774fc0ae9b373860837c76a645cf62ea5a770ee9",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://9e4c59be071002eb09a04aca2cc8d73591c411452eec02dc6dd94fa1405b2bcb",
+				"dweb:/ipfs/QmXUhbGrHN3Mrki9Gxus5LdPzmLsKtQUWU4Z1yCxqfn5md"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/cbor/BigIntCbor.sol": {
+			"keccak256": "0x4619eff96bc4ff69525a88fc4e46b8e6bdb5958ed5d694c9d60f49fb1ef169cb",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://5f99745d79ed1cd6ec9359dfbf538475742f139c791198e250704e31ee06ca49",
+				"dweb:/ipfs/QmYNrErYyS31z4iczHHME5RkUAuKrHut1KD2ENNzT65qaT"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/cbor/MarketCbor.sol": {
+			"keccak256": "0x17ba1d29cf5537b993a6fd3a5b86550a9aadb7874cdabb8c7ccc5214c1e8c004",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://004ed22d3f6abbb5a20c5389eab69cbf7e78128d4558cd290bd582ad7e248807",
+				"dweb:/ipfs/QmZJqyQyV74MkK6g9nJmKT3mYSvbYnozBuaRUnPkDYfvef"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/types/CommonTypes.sol": {
+			"keccak256": "0xa08db4b175de9872189dc1ce687c3c5ea5839f0d67515f904c0235eb2475e559",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://7811396518d4fd50141cff277f0c6cf1190e132038961ea62001b1961f78136f",
+				"dweb:/ipfs/QmcWkdNXGwa3GxK3fFB2B65iujAP3UVqCmChySDdh6d8CL"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/types/MarketTypes.sol": {
+			"keccak256": "0xf5b724a6949054a501f16271529ddeb2db012544f8df57d0e457c73cbce62539",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://429850284a094553a63541bb93e751fb60dd33621044592c19a1a057db32bffe",
+				"dweb:/ipfs/QmPTyGp7HEjWcCb9FsXJz9uucBWfRPbvZjvFUKYgVDwvYx"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/utils/Actor.sol": {
+			"keccak256": "0x3eb3fb5ae14274cf7b9443cd423d568570b9109af7c6aea6258ff2f32b543f9e",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://f68b80ea2315d723a7eb1104b3d61043c7ac94a2acf08e2e9d366708f59dcb37",
+				"dweb:/ipfs/QmckZCNXrdHbHKXWYBW7j57kuKL4g6xmp3ZaFW6JPzbcvR"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/utils/CborDecode.sol": {
+			"keccak256": "0x3502c9b3408b2391745c642ef547f930f42099cfab813a70af1dd39525aa3a43",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://0ab5590064f125d835cb44322b4992b734a0202ea1967e524c4c67665298c676",
+				"dweb:/ipfs/QmfTDpe8pyQxCTLyovGjTwvTWfkZ7C1EY5UvghjPzETnt5"
+			]
+		},
+		"contracts/filecoin-solidity/v0.8/utils/Misc.sol": {
+			"keccak256": "0x2b7477d6d6f83047a2c2b988fa924d2826a8271137f80d2b77ebba6936fd45b4",
+			"license": "Apache-2.0",
+			"urls": [
+				"bzz-raw://c32901c3e71deff9340227d0c03f391e821a8f66d45d9b4d44419c4b0fb8291a",
+				"dweb:/ipfs/QmZUSsC1cHW5S4Dw52dd8k28qfnTBVQTpUPVzCdGKhatcX"
+			]
+		},
+		"contracts/openzeppelin/contracts/access/AccessControl.sol": {
+			"keccak256": "0x4ad76d85dc4f6105bbb80115d781d9642b836010070301b32eb869146a80d11d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://300ad65e9f8b52d4ae33f980c4a930c9df0d8eba36853327ba9beccc3b64955e",
+				"dweb:/ipfs/QmWdF6s8HGrRe5sRqc9idaUsmoXkuECCDcvM2Z77xiHHvS"
+			]
+		},
+		"contracts/openzeppelin/contracts/access/IAccessControl.sol": {
+			"keccak256": "0x59ce320a585d7e1f163cd70390a0ef2ff9cec832e2aa544293a00692465a7a57",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bb2c137c343ef0c4c7ce7b18c1d108afdc9d315a04e48307288d2d05adcbde3a",
+				"dweb:/ipfs/QmUxhrAQM3MM3FF5j7AtcXLXguWCJBHJ14BRdVtuoQc8Fh"
+			]
+		},
+		"contracts/openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"contracts/openzeppelin/contracts/utils/Strings.sol": {
+			"keccak256": "0x32c202bd28995dd20c4347b7c6467a6d3241c74c8ad3edcbb610cd9205916c45",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8179c356adb19e70d6b31a1eedc8c5c7f0c00e669e2540f4099e3844c6074d30",
+				"dweb:/ipfs/QmWFbivarEobbqhS1go64ootVuHfVohBseerYy9FTEd1W2"
+			]
+		},
+		"contracts/openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d",
+				"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43"
+			]
+		},
+		"contracts/openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
+			]
+		},
+		"contracts/openzeppelin/contracts/utils/math/SafeMath.sol": {
+			"keccak256": "0xa2f576be637946f767aa56601c26d717f48a0aff44f82e46f13807eea1009a21",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://973868f808e88e21a1a0a01d4839314515ee337ad096286c88e41b74dcc11fc2",
+				"dweb:/ipfs/QmfYuZxRfx2J2xdk4EXN7jKg4bUYEMTaYk9BAw9Bqn4o2Y"
+			]
+		},
+		"solidity-cborutils/contracts/CBOR.sol": {
+			"keccak256": "0xe03d8889bf66e7a30e8010b022b6c86ad0f8c19764cc6c7f50b6bb4ad860cb9b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bbcfc16dda4f5785938acce3f6733a2a27fbcc7451da05e46e5493907c1bb790",
+				"dweb:/ipfs/QmTk1okPxoUykGuXPH3zD1LB57FwPuGbgYmViXXJtuYMUQ"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,52 @@
+.nav-img {
+  width: 16vw;
+  height: 8vh;
+  cursor: pointer;
+}
+
+.conncet-btn-div {
+  margin-left: auto;
+}
+
+.connect-btn {
+  background-color: #0e76fd;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+  .nav-img {
+    width: 50%;
+    height: 10%;
+    padding: 10px;
+    /* margin-left: -4vw; */
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .nav-img {
+    width: 30%;
+    height: 8vh;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .nav-img {
+    width: 25%;
+    height: 8vh;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1919px) {
+  .nav-img {
+    width: 16vw;
+    height: 8vh;
+  }
+}

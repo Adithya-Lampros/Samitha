@@ -1,0 +1,141 @@
+table,
+td {
+  /* border: 1px solid gray; */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+thead {
+  /* border-bottom: 1px solid black; */
+  background-color: #1b143e;
+  color: #ffffff;
+}
+th {
+  text-align: start;
+
+  padding: 10px;
+}
+th.table-options,
+td.table-options {
+  /* padding: 10px 0px; */
+  /* margin: 0; */
+  width: max-content;
+  text-align: center;
+  /* width: 20%; */
+}
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  padding: 0px 30px;
+}
+td {
+  border: 0;
+  padding: 10px;
+}
+.token-main-section {
+  width: 100%;
+  max-width: 1240px;
+  margin: 20px auto;
+  /* margin-top: 10%; */
+}
+.t-table {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius: 10px;
+}
+
+.token-main-div {
+  /* background-color: beige; */
+  /* border: 1px solid gray; */
+  /* width: 50%; */
+  /* margin: 0px auto; */
+  padding-bottom: 30px;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+}
+.token-name {
+  margin: 0 auto;
+  /* width: 50%; */
+  /* padding: 20px; */
+  /* text-align: center; */
+  padding: 20px 0px;
+}
+.rightbar-token-main {
+  width: 100%;
+  padding: 20px;
+}
+
+.leftbar-token-main {
+  width: 30%;
+  padding: 20px;
+  padding-left: 0px;
+  text-align: justify;
+}
+.token-leftbar-info {
+  margin-top: 30px;
+  /* border: 1px solid grey; */
+
+  /* margin-top: 30px; */
+}
+.token-info {
+  /* border-bottom: 1px solid gray; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  padding: 10px;
+}
+.token-info-desc-left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.token-info-desc-left span,
+.token-info-desc-right span {
+  margin: 10px 0px;
+}
+.token-info-desc-right {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.token-info-desc-main {
+  display: flex;
+  justify-content: space-between;
+}
+.progressbar {
+  padding: 10px;
+}
+.ownership-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.ownership-you {
+  background-color: aqua;
+  font-size: 1em;
+  padding: 10px;
+}
+.ownership-100 {
+  font-size: 1em;
+  padding: 10px;
+}
+#demo-select-small {
+  padding: 10px 0px;
+  font-size: 0.865rem;
+  margin: 0;
+}
+#center {
+  text-align: center;
+}
+
+.add-token-btn {
+  text-align: end;
+  padding: 20px 0px;
+}
+
+@media only screen and (max-width: 767px) {
+  .token-main-div {
+    flex-direction: column;
+  }
+}
